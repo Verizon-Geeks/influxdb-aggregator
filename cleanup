@@ -1,0 +1,6 @@
+kubectl delete -f deploy/crds/influxdb.monitoring.tbh.io_v1alpha1_influxdbaggregator_cr.yaml
+kubectl delete -f deploy/operator.yaml
+kubectl delete -f deploy/role.yaml
+kubectl delete -f deploy/role_binding.yaml
+kubectl delete -f deploy/service_account.yaml
+kubectl delete -f deploy/crds/influxdb.monitoring.tbh.io_influxdbaggregators_crd.yaml

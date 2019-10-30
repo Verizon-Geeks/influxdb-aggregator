@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb-aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: influxdb-aggregator
+  template:
+    metadata:
+      labels:
+        name: influxdb-aggregator
+    spec:
+      serviceAccountName: influxdb-aggregator
+      containers:
+        - name: influxdb-aggregator
+          # Replace this with the built image name
+          image: quay.io/tbh/influxdb-aggregator
+          command:
+          - influxdb-aggregator
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "influxdb-aggregator"
