@@ -1,0 +1,7 @@
+apiVersion: influxdb.monitoring.tbh.io/v1alpha1
+kind: InfluxDBAggregator
+metadata:
+  name: example-influxdbaggregator
+spec:
+  # Add fields here
+  size: 3
